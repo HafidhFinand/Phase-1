@@ -9,7 +9,7 @@ class Employee {
       if (err) throw err;
       cb(JSON.parse(data));
     });
-  }
+  } 
 
   static writeData(path, data){
     fs.writeFile(path, JSON.stringify(data), (err) => {
@@ -54,9 +54,20 @@ class Employee {
   }
 
   static addPatient (path, data, arrPatient, cb){
+    arrPatient[0] = data[0].idCounter + 1
     let newPatient = new Patients (arrPatient);
     data.push(newPatient);
+    data[0].idCounter += 1
     Employee.writeData(path, data);
+  }
+
+  static logout(path, data, username, cb) {
+    for (let i in data) {
+      if (data[i].username === username) {
+        data[i].loginStatus = false;
+        Employee.writeData(path, data)
+      }
+    }
   }
 }
 

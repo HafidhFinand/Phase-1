@@ -11,7 +11,7 @@ class Employee {
     Model.readData('./employees.json', (data) => {
       Model.register('./employees.json', data, arrEmp, View.createSuccess(data, arrEmp));
     })
-  }
+  } 
 
   static login (username, password){
     Model.readData('./employees.json', (data) => {
@@ -25,7 +25,7 @@ class Employee {
     })
   }
 
-  static createPatient(arrPatient){
+  static createPatient (arrPatient){
     Model.readData('./employees.json', (data) => {
       Model.isDoctorLoggedIn(data, (isDoctor) => {
         if (isDoctor){
@@ -39,6 +39,11 @@ class Employee {
     })
   }
   
+  static logout (username){
+    Model.readData('./employees.json', (data) => {
+      Model.logout('./employees.json', data, username, View.logout())
+    })
+  }
 
 }
 

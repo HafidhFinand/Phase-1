@@ -18,14 +18,12 @@ if (!command){
 } else if (command == 'addPatient'){
   let arrPatient = [input1, input2, inputDesease];
   Controller.createPatient(arrPatient);
+} else if (command == 'logout'){
+  let username = input1;
+  Controller.logout(username)
 } else {
   Controller.error();
 }
 
 
 
-// var objPerson = {
-//   username: 'hoho',
-//   position: 'bo',
-//   password: 'abc123'
-// }

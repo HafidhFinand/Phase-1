@@ -1,25 +1,42 @@
-const {ToDoController} = require('./Controllers/ToDoController.js')
+const Controller = require('./Controllers/ToDo.js');
 
-const argv = process.argv
-const command = argv[2];
-const firstInput = argv[3];
-// const secondInput = argv[4];
-// const thirdInput = argv[5];
+const command = process.argv[2];
+const allInput = process.argv.slice(3)
+const firstInput = process.argv[3];
+// const secondInput = process.argv[4];
+// const thirdInput = process.argv[5];
 
 
-
-if (!command || command === "help") {
-  ToDoController.help();
-} else if(command === "list") {
-  ToDoController.list();
-} else if(command === "add") {
-  ToDoController.add(firstInput);
+if (!command || command === 'help') {
+  Controller.help();
+} else if(command === 'list') {
+  Controller.list();
+} else if(command === 'add') {
+  Controller.add(allInput);
 } else if (command === 'findById') {
-  ToDoController.findById(firstInput);
+  Controller.findById(firstInput);
 } else if (command === 'delete') {
-  ToDoController.delete(firstInput);
+  Controller.delete(firstInput);
 } else if (command === 'complete') {
-  ToDoController.completeTask(firstInput);
+  Controller.completeTask(firstInput);
 } else if (command === 'uncomplete') {
-  ToDoController.uncompleteTask(firstInput);
+  Controller.uncompleteTask(firstInput);
+} else if (command === 'list:sort'){
+  if (firstInput === undefined || firstInput === 'asc'){
+    Controller.sortDate('asc');
+  } else if (firstInput === 'des'){
+    Controller.sortDate('des');
+  }
+} else if (command === 'list:completed'){
+  if (firstInput === undefined || firstInput === 'asc') {
+    Controller.completedTasks('asc');
+  } else if (firstInput === 'des') {
+    Controller.completedTasks('des');
+  }
+} else if (command === 'tag'){
+    Controller.tag(allInput);
+} else if (command === 'filter'){
+    Controller.filter(firstInput)
+} else {
+  Controller.help();
 }

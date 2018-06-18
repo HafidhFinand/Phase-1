@@ -17,13 +17,17 @@ class Employee {
   }
 
   static addPatientSuccess(data){
-    console.log(`Patient's data added successfully. Total patients data : ${data.length + 1}`);
+    console.log(`Patient's data added successfully. Total patients data : ${data.length}`);
   }
 
   static isNotADoctor(){
     console.log(`You don't have the authority to add patient`);
   }
 
+  static logout(){
+    console.log(`Logout success!!`)
+  }
+
 }
 
-module.exports = Employee;
+module.exports = Employee; 
