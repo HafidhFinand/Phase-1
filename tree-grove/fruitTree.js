@@ -4,7 +4,7 @@ class FruitTree {
     this._age = age;
     this._height = height;
     this._matureAge = matureAge; // starts producing
-    this._healthStatus = true;
+    this._healthStatus = healthStatus;
     this._die = 20; //cant produce anymore
   }
 
@@ -44,12 +44,15 @@ class FruitTree {
 }
 
 class AppleTree extends FruitTree {
-  constructor (name, age, height, matureAge, healthStatus) {
-    super(name, age, height, matureAge, healthStatus)
-    this._matureAge = 1; // starts producing
-    this._die = 11; //cant produce anymore
+  constructor(name, age, height, matureAge){
+    super(name, age, height, matureAge)
+    this._healthStatus = false;
+    this._die = 1
   }
 }
+
+apel = new AppleTree ('apel', 1, 2, 3, true)
+console.log(apel)
 
 class MangoTree extends FruitTree {
   constructor (name, age, height, matureAge, healthStatus) {
