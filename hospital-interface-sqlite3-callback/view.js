@@ -1,19 +1,15 @@
-class Employee {
+class View {
 
-  static showError (param = 'Invalid command!'){
-    console.log(param)
+  static showMessage (text = 'Invalid command!'){
+    console.log(text)
   }
 
-  static createSuccess(empArr){
-    console.log(`username: "${empArr[0]}" position: "${empArr[2]}" with password: "${empArr[1]}" registered`);
+  static createSuccess(resultArr){
+    console.log(`save data success ${JSON.stringify(resultArr[0])}. Total employee : ${resultArr[1]}`);
   }
 
   static loginSuccess (username){
     console.log(`user ${username} logged in succesfully`);
-  }
-
-  static loginFailed(){
-    console.log(`wrong username or password`);
   }
 
   static addPatientSuccess(data){
@@ -30,4 +26,5 @@ class Employee {
 
 }
 
-module.exports = Employee;
+module.exports = View;
+
