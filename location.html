@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Location</title>
+</head>
+<body>
+    <div class ="container">
+    <div id="formatted-address"></div>
+    </div>
+    <script>
+        // call geocode
+        geocode()
+
+        function geocode (){
+            var location = 'Hacktiv8 Indonesia';
+            axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {
+                params : {
+                    address : location,
+                    key : 'AIzaSyCkN-9M-2TCwMz9sXFECe60cA7tZcgeezI'
+                }
+            })
+            .then( result => {
+
+                //formatted address
+                console.log(result.data.results[0].formatted_address)
+                var formattedAddress = result.data.results[0].formatted_address
+                var outputAddress = `
+                    <ul class = 'list-group'>
+                        <li class = 'list-group-item'>${formattedAddress}</li>
+                    </ul>
+                `
+
+                var addressComponents = result.data.results[0].addressComponents
+                forEach.addressComponents()
+
+                //output to app
+                document.getElementById('formatted-address').innerHTML = outputAddress
+            })
+            .catch( err => {
+                console.log(err.message)
+            })
+        }
+    </script>
+</body>
+</html>
+
