@@ -1,5 +1,14 @@
-var x = []
-var y;
+var x = [
+  ['D', 'G'],
+  ['K', 'L']
+]
+var y = ''
 
-x.push(1,2,3)
-console.log(x[2])
+for (let i in x){
+  for (let j in x[i]){
+    y += x[i][j]
+  }
+}
+
+
+console.log(y)
