@@ -11,21 +11,28 @@ function generateBarChart (numberArr) {
   }
 
   let mainArr = [];
-  for (let i = 0; i < max.number; i++){
+  for (let i = 0; i <= max.number; i++){
     let strFront = `${i}|`
     let arr = [];
     arr.push(strFront);
-    for (let j in numberArr){
+    for (let j = 0; j <= numberArr.length; j++){
       if (i === 0){
-        arr.push(`(${numberArr[j]})-`)
+        if (j < numberArr.length){
+          arr.push(`(${numberArr[j]})-`)
+        }
       } else {
-
+        if (i <= numberArr[j]){
+          arr.push('III ')
+        } else {
+          arr.push ('    ')
+        }
+        
       }
     }
-    if (i ===0){
+    if (i === 0){
       mainArr.push(arr.join('-'))
     } else {
-
+      mainArr.push(arr.join(' '))
     }
   }
   mainArr.reverse();
